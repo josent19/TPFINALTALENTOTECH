@@ -1,0 +1,22 @@
+{
+  "name": "api-productos",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "Jose Martinez",
+  "license": "ISC",
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "expess": "^0.0.1-security",
+    "express": "^5.2.1",
+    "firebase": "^12.6.0",
+    "jsonwebtoken": "^9.0.3"
+  }
+}
