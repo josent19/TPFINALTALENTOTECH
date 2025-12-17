@@ -1,28 +1,28 @@
-let products = [];
+import { db } from "../firebase.js";
 
-export const getAllProducts = () => {
-  return products;
+export const getAllProducts = async () => {
+  const snapshot = await db.collection("products").get();
+
+  return snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data()
+  }));
 };
 
-export const createProduct = (data) => {
-  const newProduct = {
-    id: Date.now(),
-    ...data
+export const createProduct = async (product) => {
+  const cleanProduct = {
+    name: product.name,
+    price: product.price
   };
 
-  products.push(newProduct);
-  return newProduct;
+  const docRef = await db.collection("products").add(cleanProduct);
+
+  return {
+    id: docRef.id,
+    ...cleanProduct
+  };
 };
 
-export const deleteProduct = (id) => {
-  const index = products.findIndex(p => p.id === Number(id));
-
-  if (index === -1) {
-    return null;
-  }
-
-  const deletedProduct = products[index];
-  products.splice(index, 1);
-
-  return deletedProduct;
+export const deleteProduct = async (id) => {
+  await db.collection("products").doc(id).delete();
 };

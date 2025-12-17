@@ -17,6 +17,7 @@
     "expess": "^0.0.1-security",
     "express": "^5.2.1",
     "firebase": "^12.6.0",
+    "firebase-admin": "^13.6.0",
     "jsonwebtoken": "^9.0.3"
   }
 }
